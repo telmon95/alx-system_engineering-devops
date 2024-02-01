@@ -1,6 +1,27 @@
 #!/usr/bin/env bash
-# Displays listening ports. Includes listening sockets as well
-# + as the PID and name of the program to which each socket belongs.
 
-netstat -l --program
+# Display listening ports with PID and program name using ss
+
+# Display TCP listening ports
+echo "Active Internet connections (only servers)"
+echo "Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name"
+echo "---------------------------------------------------------------------------------------------"
+ss -tlnp | awk 'NR>1 {print $1, $5, $7}' | grep -E '^tcp' | while read line; do
+    protocol=$(echo "$line" | awk '{print $1}')
+    local_address=$(echo "$line" | awk '{print $2}')
+    pid_program=$(echo "$line" | awk '{print $7}')
+    pid=$(echo "$pid_program" | cut -d'/' -f1)
+    program=$(echo "$pid_program" | cut -d'/' -f2-)
+    echo "$protocol        -      -    $local_address                LISTEN      $pid/$program"
+done
+
+# Display UDP listening ports
+ss -ulnp | awk 'NR>1 {print $1, $5}' | grep -E '^udp' | while read line; do
+    protocol=$(echo "$line" | awk '{print $1}')
+    local_address=$(echo "$line" | awk '{print $2}')
+    pid_program=$(ss -ulnp | grep "$local_address" | awk '{print $6}')
+    pid=$(echo "$pid_program" | cut -d'/' -f1)
+    program=$(echo "$pid_program" | cut -d'/' -f2-)
+    echo "$protocol        -      -    $local_address                LISTEN      $pid/$program"
+done
 
