@@ -1,0 +1,37 @@
+#!/bin/bash
+
+# Set the student ID
+STUDENT_ID="03"
+
+# Set the hostname of the new server
+NEW_SERVER_HOSTNAME="[STUDENT_ID]-web-02"
+
+# Set the IP address of the new server
+NEW_SERVER_IP="54.89.38.100"
+
+# Set the load balancer IP
+LOAD_BALANCER_IP="34.198.248.145"
+
+# Set the Nginx response header name
+NGINX_RESPONSE_HEADER_NAME="X-Served-By"
+
+# Set the Nginx response header value
+NGINX_RESPONSE_HEADER_VALUE="$NEW_SERVER_HOSTNAME"
+
+# Update the new server's hostname
+sudo hostnamectl set-hostname "$NEW_SERVER_HOSTNAME"
+
+# Update the new server's hostname in /etc/hosts
+sudo echo "172.17.0.28 $NEW_SERVER_HOSTNAME" | sudo tee -a /etc/hosts
+
+# Install Nginx
+sudo apt-get update
+sudo apt-get install nginx -y
+
+# Create a configuration file for the new server
+sudo mkdir -p /etc/nginx/sites-available
+sudo cp /etc/nginx/sites-enabled/default /etc/nginx/sites-available/"$NEW_SERVER_HOSTNAME"
+
+# Modify the configuration file
+sudo nano /etc/nginx/sites-available/"$NEW_SERVER_HOSTNAME"
+
