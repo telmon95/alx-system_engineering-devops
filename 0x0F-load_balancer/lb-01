@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# connects to my load balancer
+ssh -l ~/.ss/id_rsa ubuntu@34.207.61.59
