@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# Connects to the load balancer (458821-lb-01)
+ssh -i ~/.ssh/id_rsa ubuntu@54.90.2.187
+
+# Connects to web server 458821-web-01
+ssh -i ~/.ssh/id_rsa ubuntu@100.25.144.246
+
+# Connects to web server 458821-web-02
+ssh -i ~/.ssh/id_rsa ubuntu@34.207.61.59
