@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
-
-# Create a symbolic link between Nginx config files
+# script of task 0 but using less lines
 ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
-
-# Reload nginx configuration
-nginx -s reload || echo "nginx is not running"
-
+service nginx restart
+kill "$(pgrep 'nginx' | head -1)"

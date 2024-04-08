@@ -1,0 +1,9 @@
+sudo: netstat: command not found
+Error: Nginx is not run with sudo privileges
+Restarting Nginx with sudo privileges...
+System has not been booted with systemd as init system (PID 1). Can't operate.
+Failed to connect to bus: Host is down
+ERROR: problem running iptables: iptables v1.8.4 (legacy): can't initialize iptables table `filter': Permission denied (you must be root)
+Perhaps iptables or your kernel needs to be upgraded.
+
+
