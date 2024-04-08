@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# Create a symbolic link between Nginx config files
+ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+
+# Reload nginx configuration
+nginx -s reload || echo "nginx is not running"
+
