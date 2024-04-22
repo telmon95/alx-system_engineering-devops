@@ -16,4 +16,3 @@ if __name__ == '__main__':
                                                           len(completed),
                                                           len(to_do)))
     [print("\t {}".format(title)) for title in completed]
-
