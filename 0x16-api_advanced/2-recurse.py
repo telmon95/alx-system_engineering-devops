@@ -1,5 +1,6 @@
 import requests
 
+
 def recurse(subreddit, hot_list=[]):
     """Recursively retrieves titles of hot articles for a given subreddit."""
     url = f"https://www.reddit.com/r/{subreddit}/hot.json"
@@ -21,6 +22,7 @@ def recurse(subreddit, hot_list=[]):
             return hot_list
     else:
         return None
+
 
 # Test the function
 if __name__ == "__main__":
