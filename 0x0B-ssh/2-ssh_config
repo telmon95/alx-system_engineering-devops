@@ -1,7 +1,13 @@
-# SSH Config File
-#
+#!/bin/bash
+
+# Create an SSH config file
+cat <<EOT > ~/.ssh/config
+
 Host web-01
-	Hostname 100.25.144.246
-	User ubuntu
-	PasswordAuthentication no
-	IdentityFile ~/.ssh/school
+       Hostname 100.25.144.246
+       User ubuntu
+       PasswordAuthentication no
+       IdentityFile ~/.ssh/school
+
+EOT
+
