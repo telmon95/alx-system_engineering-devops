@@ -37,15 +37,14 @@ defaults
         errorfile 504 /etc/haproxy/errors/504.http
 
 
-frontend telmon
+frontend telmon.tech
         bind 0:80
-        bind 0:443 ssl crt /etc/ssl/private/telmon.pem
+        bind 0:443 ssl crt /etc/ssl/private/telmon.tech.pem
         http-request redirect scheme https code 301 unless { ssl_fc }
         option forwardfor
-        default_backend sammykingx.tech_backend
+        default_backend telmon.tech_backend
 
-backend telmon
+backend telmon.tech_backend
         balance roundrobin
-        server 64820-web-01 107.23.111.123:80 check
-        server 64820-web-02 52.86.171.80:80 check
-
+        server 458821-web-01 107.23.111.123:80 check
+        server 458821-web-02 52.86.171.80:80 check
