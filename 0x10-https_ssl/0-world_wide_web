@@ -16,3 +16,4 @@ else
     CONCAT="$2.$1"
     DNS_info $2 $CONCAT
 fi
+
