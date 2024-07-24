@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Run software as another user
+
+# Check if the correct number of arguments is provided
+if [ "$#" -ne 1 ]; then
+    echo "Usage: $0 <username>"
+    exit 1
+fi
+
+# Run whoami as the specified user
+sudo -u "$1" whoami
