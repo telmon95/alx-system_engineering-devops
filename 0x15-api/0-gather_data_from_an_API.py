@@ -37,7 +37,7 @@ def main():
     print("Employee {} is done with tasks ({}/{}):".format(
         user_info['name'], len(completed_tasks), total_tasks))
     for task in completed_tasks:
-        print("\t", task)
+        print("\t {}".format(task))
 
 if __name__ == '__main__':
     main()
